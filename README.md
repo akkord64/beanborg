@@ -114,8 +114,8 @@ Note that the first index starts from `0`.
 | account         | This property is normally used when a CSV file doesn't contain any account property (IBAN, ABA, account number, etc).      |                    |
 | currency        | Force a default currency                                                                                                   |                    |
 | default_expense | Default expense account                                                                                                    | `Expenses:Unknown` |
-| force_negative  | TODO                                                                                                                       | False              |
-| invert_negative | TODO                                                                                                                       | False              |
+| force_negative  | Forces all transaction amounts which are posative to be negative in the output file.                                       | False              |
+| invert_negative | Forces all transactions which are negative in the source file to be positive in the output file.                           | False              |
 | origin_account  | Specifies the origin account of each transaction                                                                           |                    |
 | ruleset         | List of rules to apply to the CSV file. See `rules` section.                                                               |                    |
 
@@ -270,7 +270,7 @@ The CSV values are **case-insensitive**.
 
 #### Ignore_By_Payee
 
-This rule can be used to ignore a transaction based on the value of the `counterparty` index.
+This rule can be used to ignore a transaction based on a string matched value of the `counterparty` index.
 
 ```
 - name: Ignore_By_Payee
@@ -282,7 +282,7 @@ The counterparty names are **case-insensitive**.
 
 #### Ignore_By_StringAtPos
 
-This rule can be used to ignore a transaction based on the value of a specific CVS index.
+This rule can be used to ignore a transaction based on the value of a specific CSV index. The index in this rule must not already be assigned as a field mapping.
 
 ```
 - name: Ignore_By_StringAtPos
